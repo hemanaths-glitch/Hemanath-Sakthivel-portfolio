@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hemanath Sakthivel's web development portfolio, projects, skills, and contact information.">
+  <meta name="theme-color" content="#0b1020">
+  <title>Hemanath Sakthivel | Web Developer</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-border: rgba(255, 255, 255, 0.12);
+      --text: #eef2ff;
+      --muted: #a9b4ce;
+      --accent: #7c8cff;
+      --accent-2: #5eead4;
+      --max-width: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 15% 0%, rgba(124, 140, 255, 0.17), transparent 38rem),
+        radial-gradient(ellipse at 90% 30%, rgba(94, 234, 212, 0.09), transparent 30rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 4px; }
+    .container { width: min(var(--max-width), calc(100% - 40px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11, 16, 32, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: -0.04em; font-size: 1.05rem; }
+    .brand span { color: var(--accent-2); }
+    .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+    .nav-links a { color: var(--muted); font-size: 0.92rem; text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+    .hero { padding: 104px 0 86px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--accent-2); font-size: 0.83rem; font-weight: 750;
+      letter-spacing: 0.13em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 25px; height: 2px; background: currentColor; }
+    h1 { margin: 18px 0; max-width: 850px; font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 1.04; letter-spacing: -0.065em; }
+    .gradient-text { color: transparent; background: linear-gradient(100deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; }
+    .hero-copy { max-width: 650px; color: var(--muted); font-size: clamp(1.04rem, 2vw, 1.2rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .button {
+      display: inline-flex; justify-content: center; align-items: center; gap: 9px;
+      padding: 12px 18px; border: 1px solid var(--panel-border); border-radius: 12px;
+      text-decoration: none; font-weight: 750; transition: transform .18s ease, border-color .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .button.primary { color: #0b1020; background: linear-gradient(110deg, var(--accent), var(--accent-2)); border: 0; }
+    section { padding: 76px 0; }
+    .section-heading { margin-bottom: 30px; }
+    .section-heading h2 { margin: 8px 0 10px; font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.15; letter-spacing: -0.045em; }
+    .section-heading p { margin: 0; max-width: 680px; color: var(--muted); }
+    .panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 20px; padding: clamp(22px, 4vw, 34px); }
+    .about-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: stretch; }
+    .about-grid p { color: var(--muted); margin-top: 0; }
+    .highlight-list { display: grid; gap: 14px; }
+    .highlight { padding: 17px; border-radius: 14px; background: rgba(255,255,255,0.045); }
+    .highlight strong { display: block; margin-bottom: 3px; }
+    .highlight span { color: var(--muted); font-size: .93rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .skill { padding: 18px; border: 1px solid var(--panel-border); border-radius: 14px; background: var(--panel); }
+    .skill strong { display: block; }
+    .skill span { display: block; margin-top: 5px; color: var(--muted); font-size: .9rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project-card { display: flex; flex-direction: column; min-height: 280px; }
+    .project-icon {
+      width: 44px; height: 44px; display: grid; place-items: center; margin-bottom: 20px;
+      border-radius: 13px; color: var(--accent-2); background: rgba(94,234,212,.1); font-size: 1.25rem;
+    }
+    .project-card h3 { margin: 0 0 8px; font-size: 1.18rem; }
+    .project-card p { color: var(--muted); margin: 0 0 18px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 12px; }
+    .tag { padding: 4px 9px; border-radius: 999px; color: #dbe3ff; background: rgba(124,140,255,.13); font-size: .78rem; }
+    .project-links { display: flex; gap: 14px; margin-top: 17px; }
+    .project-links a { color: var(--accent-2); font-size: .9rem; font-weight: 700; text-decoration: none; }
+    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .contact-panel p { max-width: 650px; margin-bottom: 0; color: var(--muted); }
+    footer { padding: 26px 0 38px; color: var(--muted); border-top: 1px solid rgba(255,255,255,.08); font-size: .9rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding-top: 78px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(var(--max-width), calc(100% - 28px)); }
+      .nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: 15px 0; gap: 10px; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: .86rem; }
+      .hero { padding: 66px 0 52px; }
+      section { padding: 54px 0; }
+      .skills-grid, .project-grid { grid-template-columns: 1fr; }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home">Hemanath<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <span class="eyebrow">Web Developer Portfolio</span>
+      <h1>Hi, I'm Hemanath Sakthivel.<br><span class="gradient-text">I build for the web.</span></h1>
+      <p class="hero-copy">
+        I'm a web developer interested in creating clean, responsive, and user-friendly digital experiences.
+        Explore my skills and projects, and feel free to get in touch.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#projects">Explore my projects <span aria-hidden="true">↗</span></a>
+        <a class="button" href="#contact">Contact me</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">A little about me</span>
+          <h2>Turning ideas into useful experiences.</h2>
+          <p>A short introduction to who I am and what I enjoy building.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              I'm Hemanath Sakthivel, an aspiring web developer who enjoys learning how websites work
+              and building experiences that are simple to use on both desktop and mobile.
+            </p>
+            <p>
+              I’m continuing to grow my skills through hands-on practice and projects. This portfolio
+              is a place to share my work, what I’m learning, and the best way to contact me.
+            </p>
+            <p><strong>Tip:</strong> Update this section with your education, experience, interests, and career goals.</p>
+          </div>
+          <div class="highlight-list">
+            <div class="highlight"><strong>Responsive design</strong><span>Layouts that adapt to different screen sizes.</span></div>
+            <div class="highlight"><strong>Accessible by design</strong><span>Clear navigation and readable content.</span></div>
+            <div class="highlight"><strong>Always learning</strong><span>Improving through practice and feedback.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">What I work with</span>
+          <h2>Skills</h2>
+          <p>Keep only the technologies you know or are actively learning.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill"><strong>HTML5</strong><span>Semantic page structure</span></div>
+          <div class="skill"><strong>CSS3</strong><span>Layouts and responsive styling</span></div>
+          <div class="skill"><strong>JavaScript</strong><span>Interactive web experiences</span></div>
+          <div class="skill"><strong>Git &amp; GitHub</strong><span>Version control and collaboration</span></div>
+          <div class="skill"><strong>Responsive UI</strong><span>Mobile-first layouts</span></div>
+          <div class="skill"><strong>Accessibility</strong><span>Usable, inclusive interfaces</span></div>
+          <div class="skill"><strong>Debugging</strong><span>Finding and fixing issues</span></div>
+          <div class="skill"><strong>Learning mindset</strong><span>Practice and continuous improvement</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Selected work</span>
+          <h2>Projects</h2>
+          <p>Replace these example cards with your real projects and their repository or live-demo links.</p>
+        </div>
+        <div class="project-grid">
+          <article class="panel project-card">
+            <div class="project-icon" aria-hidden="true">✦</div>
+            <h3>Personal Portfolio</h3>
+            <p>A responsive website introducing me, highlighting my skills, and making it easy to contact me.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div>
+            <div class="project-links"><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a><a href="#contact">Details ↗</a></div>
+          </article>
+          <article class="panel project-card">
+            <div class="project-icon" aria-hidden="true">⌘</div>
+            <h3>Project Two</h3>
+            <p>Describe a website or application you built, the problem it solves, and your contribution.</p>
+            <div class="tags"><span class="tag">Add technology</span><span class="tag">Add feature</span></div>
+            <div class="project-links"><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://example.com/" target="_blank" rel="noreferrer">Live demo ↗</a></div>
+          </article>
+          <article class="panel project-card">
+            <div class="project-icon" aria-hidden="true">◎</div>
+            <h3>Project Three</h3>
+            <p>Show another project, coursework assignment, or useful practice build. Explain what you learned.</p>
+            <div class="tags"><span class="tag">Add technology</span><span class="tag">Add feature</span></div>
+            <div class="project-links"><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://example.com/" target="_blank" rel="noreferrer">Live demo ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="panel contact-panel">
+          <div>
+            <span class="eyebrow">Get in touch</span>
+            <h2 style="margin: 10px 0 8px; letter-spacing: -.04em;">Let's connect.</h2>
+            <p>Have an opportunity, collaboration idea, or feedback? Send me an email. Replace the placeholder address in this file with your real email first.</p>
+          </div>
+          <a class="button primary" href="mailto:your.email@example.com">Email me ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> Hemanath Sakthivel</span>
+      <span>Designed and built with HTML &amp; CSS.</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
